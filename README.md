@@ -127,7 +127,7 @@ File found: /service.html - 200
   - `flag2.txt`: flag2{fc3fd58dcdad9ab23faca6e9a36e581c}
 
       **Method Used**
-      - Through the previous webpage enumeration it was clear it was hosting a the wordpress application. 
+      - Through the previous webpage enumeration it was clear it was hosting the wordpress application. 
       - wpscan was used aginst it to see if any useful information could be found to help as gain access to the server.
 
 
