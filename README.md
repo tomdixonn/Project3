@@ -211,7 +211,7 @@ wpscan.txt
 Displaying wpscan.txt.
 ```
 
-  - 2 potential usernames were found in the wpscan being `steven` and `micheal` that we can use to attempt to gain access to the machince via ssh.
+  - 2 potential usernames were found in the wpscan being `steven` and `michael` that we can use to attempt to gain access to the machince via ssh.
   - We will target michael first by making a quick wordlist with the [mentalist](https://github.com/sc0tfree/mentalist) of possible passwords.
   ```
   root@Kali:~# mentalist
